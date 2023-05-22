@@ -354,9 +354,9 @@ while time.time() < target_time:
     bitcoinopen_pred_norm = [(i - min(bitcoinopen))/(max(bitcoinopen)-min(bitcoinopen)) for i in bitcoinopen_pred]
     bitcoinvolume_pred_norm = [(i - min(bitcoinvolume))/(max(bitcoinvolume)-min(bitcoinvolume)) for i in bitcoinvolume_pred]
     X_pred = pd.DataFrame()
-    X_pred['price'] = bitcoin1_norm[0]
+    X_pred['price'] = bitcoin1_norm[-1]
     X_pred['minute'] = minutes_from_midnight_pred_norm
-    X_pred['volume'] = bitcoinvolume_norm[0]
+    X_pred['volume'] = bitcoinvolume_norm[-1]
     predictions = model1.predict(X_pred)
     bitcoin_pred = [(i*(max(bitcoin1)-min(bitcoin1)))+min(bitcoin1) for i in predictions]
     
